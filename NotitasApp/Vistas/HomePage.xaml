@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NotitasApp.Vistas.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--TextBox de Busqueda de Alumno-->
+            <Frame CornerRadius="50">
+                <SearchBar x:Name="txtBuscar" TextChanged="txtBuscar_TextChanged" 
+                           Placeholder="Buscar Nombre Alumno"/>
+            </Frame>
+            <Frame CornerRadius="20">
+                <ListView x:Name="listViewAlumnos" HasUnevenRows="True" SeparatorVisibility="None" 
+                          SeparatorColor="Transparent" ItemSelected="listViewAlumnos_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Eliminar" x:Name="btnEliminar" Clicked="btnEliminar_Clicked"
+                                              CommandParameter="{Binding .}"/>
+                                </ViewCell.ContextActions>
+                                <Frame Padding="5" Margin="10" HeightRequest="150" WidthRequest="400">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Nombre:"></Label>
+                                            <Label Text="{Binding NombreEstudiante}"></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Nota:"></Label>
+                                            <Label Text="{Binding Nota}"></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Grado:"></Label>
+                                            <Label Text="{Binding Grado}"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+            <!--Boton Agregar Alumno-->
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                <Button x:Name="btnAlumno" Style="{StaticResource Boton}" 
+                        Text="Agregar Alumno" HorizontalOptions="CenterAndExpand"
+                        Clicked="btnAlumno_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

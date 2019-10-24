@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NotitasApp.Vistas.AgregarAlumnoPage"
+             xmlns:Modelo="clr-namespace:NotitasApp.Modelos">
+    <ContentPage.BindingContext>
+        <Modelo:AlumnoModel></Modelo:AlumnoModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Style="{StaticResource stackTitulo}">
+                <Label Text="Agregar Nuevo Alumno" Style="{StaticResource lblTitulo}"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </StackLayout>
+            <Frame>
+                <StackLayout>
+                    <Frame CornerRadius="50">
+                        <Entry Text="{Binding NombreEstudiante}" Placeholder="Nombre Alumno"
+                               x:Name="txtNombre"/>
+                    </Frame>
+                    <Frame CornerRadius="50">
+                        <Entry Text="{Binding Nota}" Keyboard="Numeric" Placeholder="Nota"
+                               x:Name="txtNota"/>
+                    </Frame>
+                    <Frame CornerRadius="50">
+                        <Entry Text="{Binding Grado}" Placeholder="Grado" x:Name="txtGrado"/>
+                    </Frame>
+                    <Frame CornerRadius="50">
+                        <StackLayout Orientation="Horizontal">
+                            <Button x:Name="btnGuardar" Style="{StaticResource btnCRUD}" Text="Guardar"
+                                    Clicked="btnGuardar_Clicked" HorizontalOptions="CenterAndExpand"/>
+                            <Button x:Name="btnCancelar" Style="{StaticResource btnCRUD}" Text="Cancelar"
+                                    Clicked="btnCancelar_Clicked" HorizontalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
